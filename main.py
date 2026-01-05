@@ -1,7 +1,7 @@
 import pandas as pd
 df=pd.read_csv("/content/parkinsons.csv")
 print(list(df.columns))
-selected_feature=["HNR","NHR"]
+selected_feature=['PPE',"NHR"]
 x=df[selected_feature]
 y=df["status"]
 
@@ -12,10 +12,10 @@ x = scaler.fit_transform(x)
 
 from sklearn.model_selection import train_test_split
 
-x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_state=42)
+x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.5, random_state=42)
 from sklearn.neighbors import KNeighborsClassifier
 
-model = KNeighborsClassifier(n_neighbors=4)
+model = KNeighborsClassifier(n_neighbors=6)
 model.fit(x_train, y_train)
 
 from sklearn.metrics import accuracy_score
